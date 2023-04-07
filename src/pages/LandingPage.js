@@ -1,21 +1,24 @@
 import { useState } from 'react'
 import ZipInput from "../components/ZipInput";
 import Table from '../components/Table';
+import headphones from '../images/headphones.png';
+import Image from 'next/image';
+
 
 export default function LandingPage() {
-  
+
   return (
     <div className="landing-page bg-cover bg-navy">
       <header className="absolute inset-x-0 top-0 z-50">
         <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
           
           {/* Add site name at top left later (optional) */}
-
-          {/* <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5 text-white">
-              <span></span>
+          <div className="flex text-4xl lg:flex-1"> 
+            <a href="#" className="-m-1.5 p-1.5 text-30px text-white">
+            <Image className="logo" src={headphones} alt="headphones logo" width={40} height={40} />
+              <span>SetListPlay</span>
             </a>
-          </div>  */}
+          </div> 
         </nav>
       </header>
 
@@ -38,7 +41,7 @@ export default function LandingPage() {
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              Create a customizable playlist of all artists coming to your town this month!
+              Create a custom playlist of all artists coming to your town this month!
             </h1>
             <p className="mt-4 text-lg leading-8 text-gold">
               Enter your zip code to begin creating your playlist.
