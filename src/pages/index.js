@@ -13,7 +13,6 @@ const [currentDate, setCurrentDate] = useState('');
 const [maxDate, setMaxDate] = useState('');
 const [concerts, setConcerts] = useState([]);
 
-
 useEffect(() => {
   let date = new Date;
   setCurrentDate(date.toISOString().split('T')[0]);
