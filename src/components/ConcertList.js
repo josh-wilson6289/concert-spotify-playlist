@@ -1,8 +1,22 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
+import createPlaylist from '../pages/api/spotify';
+import spotify from '../pages/api/spotify';
 
 const ConcertList = ({ concerts }) => {
+
+
   let filteredConcerts = concerts.filter((concert) => concert.type === 'concert');
-  console.log(filteredConcerts)
+  
+  let artistList = []
+
+  let artists = filteredConcerts.map((concert) => {
+    concert.performers.map((artist) => {
+      artistList.push({artist: artist.name});
+    })
+  })
+  
+  
   let renderedConcerts = filteredConcerts.map((concert) => {
     return (
       <li key={concert.id} className="flex justify-between gap-x-6 py-5">
@@ -23,9 +37,17 @@ const ConcertList = ({ concerts }) => {
   });
 
   return (
+    <div>
+
+  <button className="rounded-md bg-green mt-3 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:green" 
+  type="button" onClick={spotify.getUser}>
+      Create your playlist
+    </button>
+
     <ul role="list" className="divide-y divide-gold">
       {renderedConcerts}
     </ul>
+    </div>
   )
 }
 
