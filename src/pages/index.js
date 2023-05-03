@@ -17,7 +17,7 @@ useEffect(() => {
   let date = new Date;
   setCurrentDate(date.toISOString().split('T')[0]);
   setMaxDate(addWeeks(date, 1).toISOString().split('T')[0]);
-})
+},[])
 
 const handleSubmit = async (zip) => { 
   const result = await searchConcerts(currentDate, maxDate, zip);
