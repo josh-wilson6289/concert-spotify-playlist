@@ -1,10 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import createPlaylist from '../pages/api/spotify';
-import spotify from '../pages/api/spotify';
 
 const ConcertList = ({ concerts }) => {
-
 
   let filteredConcerts = concerts.filter((concert) => concert.type === 'concert');
   
@@ -38,12 +35,6 @@ const ConcertList = ({ concerts }) => {
 
   return (
     <div>
-
-  <button className="rounded-md bg-green mt-3 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:green" 
-  type="button" onClick={spotify.getUser}>
-      Create your playlist
-    </button>
-
     <ul role="list" className="divide-y divide-gold">
       {renderedConcerts}
     </ul>
