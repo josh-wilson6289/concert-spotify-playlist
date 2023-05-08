@@ -16,10 +16,10 @@ async function userLogin() {
     };
   const response = await axios.get('https://api.spotify.com/v1/me', {headers})
   setUserID(response.data.id)
-  console.log(spotify.createPlaylist(userID, token))
+  console.log(userID, token)
   }
   userLogin()
-},[]); 
+}); 
 
 
 return (

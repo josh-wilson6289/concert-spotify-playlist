@@ -11,7 +11,8 @@ module.exports = {
       'gold': '#E9C46A',
       'orange': "#F4A261",
       'red': '#E76F51',
-      'white': '#FFFFFF'
+      'white': '#FFFFFF',
+      'spotify-green': '#1DB954'
     },
   },
   plugins: [

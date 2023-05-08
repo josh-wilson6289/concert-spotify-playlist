@@ -22,6 +22,7 @@ useEffect(() => {
 const handleSubmit = async (zip) => { 
   const result = await searchConcerts(currentDate, maxDate, zip);
   setConcerts(result);
+  console.log(concerts)
 }
 
 const handleClick = (e) => {
@@ -38,11 +39,9 @@ const handleClick = (e) => {
       </Head>
       <main className="relative isolate px-6 pt-14 lg:px-8 overflow-hidden">
       <Navigation handleClick={handleClick}/>
- 
-      {concerts.length < 1 ? 
-      <Hero onSubmit={handleSubmit}/>
-      :
-      <ConcertList concerts={concerts}/>
+
+      {concerts.length < 1 ? <Hero onSubmit={handleSubmit}/> :
+      <ConcertList concerts={concerts}></ConcertList>
       }
       </main>
     </>
