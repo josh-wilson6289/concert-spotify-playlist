@@ -3,18 +3,9 @@ import { useState, useEffect } from 'react';
 
 const ConcertList = ({ concerts }) => {
 
-  let filteredConcerts = concerts.filter((concert) => concert.type === 'concert');
   
-  let artistList = []
-
-  let artists = filteredConcerts.map((concert) => {
-    concert.performers.map((artist) => {
-      artistList.push({artist: artist.name});
-    })
-  })
+  let renderedConcerts = concerts.map((concert) => {
   
-  
-  let renderedConcerts = filteredConcerts.map((concert) => {
     return (
       <li key={concert.id} className="flex justify-between gap-x-6 py-5">
       <div className="flex gap-x-4">

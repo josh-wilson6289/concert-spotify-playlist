@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function ZipInput( {onSubmit}) {
+export default function ZipInput( {onSubmit, spotifyID}) {
 
   const [zip, setZip] = useState('');
 
@@ -9,7 +9,7 @@ export default function ZipInput( {onSubmit}) {
     if (zip.length !=5) {
       alert('Please enter a valid Zip Code')
     }
-    onSubmit(zip);
+    onSubmit(zip, spotifyID);
   }
 
   const handleZipChange = (e) => {

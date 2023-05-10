@@ -5,15 +5,15 @@ export default NextAuth({
   providers: [
     SpotifyProvider({
       authorization:
-      'https://accounts.spotify.com/authorize?scope=user-read-email,playlist-modify-private',
-      clientId: 'cbe1cb5e313c4b2c9ea931248714a358',
-      clientSecret: '00d0eb9da15542f098af0777f38629e8',
+      'https://accounts.spotify.com/authorize?scope=playlist-modify-private',
+      clientId: process.env.SPOTIFY_CLIENT_ID,
+      clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
     }),
   ],
   callbacks: {
     async jwt({token, account}) {
       if (account) {
-        token.accessToken = account.refresh_token;
+        token.accessToken = account.access_token;
       }
       return token;
     },
@@ -23,3 +23,4 @@ export default NextAuth({
     }
   }
 })
+
