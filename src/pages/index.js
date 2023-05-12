@@ -43,9 +43,9 @@ return (
     <>
       <Head>
         <title>SetList</title>
-        <meta name="SetList" content="A website that locates concerts in your area and creates a spotify playlist of all upcoming artists" />
+        <meta name="Local SetList" content="A website that locates concerts in your area and creates a spotify playlist of all upcoming artists" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <main className="relative isolate px-6 pt-14 lg:px-8 overflow-hidden">
       <Navigation handleClick={handleClick}/>

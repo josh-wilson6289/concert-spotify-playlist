@@ -13,7 +13,7 @@ export default function Navigation({ handleClick, login }) {
           <div className="logo flex text-4xl lg:flex-1" onClick={handleClick}> 
             <a className="-m-1.5 p-1.5 text-30px text-white">
             <Image className="logo-image" src={headphones} alt="headphones logo" width={40} height={40} />
-              <span>Weekly SetList</span>
+              <span>SetList</span>
             </a>
           </div>
 
