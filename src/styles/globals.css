@@ -4,7 +4,7 @@
 @tailwind forms;
 
 
-.logo {
+.logo-image {
   display: inline;
   margin-right: 10px;
   padding-bottom: 10px;
@@ -22,3 +22,33 @@ body {
 .spotify-login span {
   cursor: pointer;
 }
+
+.navbar .logo {
+  cursor: pointer;
+}
+
+.signout {
+  cursor: pointer;
+  margin-right: 10px
+}
+
+.signin {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.spotify-icon {
+  float: right;
+  padding-left: 10px;
+}
+
+.playlist-status {
+  margin-top: 5%;
+}
+
+.playlist-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+}
+  
