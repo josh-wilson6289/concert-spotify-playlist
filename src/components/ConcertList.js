@@ -1,7 +1,7 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import PlaylistStatus from './PlaylistStatus';
 
-const ConcertList = ({ concerts }) => {
+const ConcertList = ({ concerts, status }) => {
 
   
   let renderedConcerts = concerts.map((concert) => {
@@ -26,6 +26,7 @@ const ConcertList = ({ concerts }) => {
 
   return (
     <div>
+    <PlaylistStatus status={status}/>
     <ul role="list" className="divide-y divide-gold">
       {renderedConcerts}
     </ul>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const createPlaylist = async (concerts, token, spotifyId) => {
+const createPlaylist = async (concerts, token, spotifyId, setPlaylistStatus) => {
   // make artist array mapping performers
 
   const getArtists = (concerts) => {
@@ -110,8 +110,9 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
       uris: URIs
       }
     })
-    console.log(response)
+    setPlaylistStatus(response.status)
   }
+
   createEmptyPlaylist(spotifyId, token);
   }
 

@@ -6,8 +6,8 @@ export default NextAuth({
     SpotifyProvider({
       authorization:
       'https://accounts.spotify.com/authorize?scope=playlist-modify-private',
-      clientId: process.env.SPOTIFY_CLIENT_ID,
-      clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+      clientId: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID,
+      clientSecret: process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_SECRET,
     }),
   ],
   callbacks: {

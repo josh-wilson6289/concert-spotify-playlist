@@ -14,7 +14,7 @@ export default function Home() {
 const [currentDate, setCurrentDate] = useState('');
 const [maxDate, setMaxDate] = useState('');
 const [concerts, setConcerts] = useState([]);
-const [artists, setArtists] = useState([]);
+const [playlistStatus, setPlaylistStatus] = useState();
 
 const {data: session} = useSession();
 
@@ -32,7 +32,7 @@ const handleZipSubmit = async (zip) => {
   // removes comedy shows and all other types of events
   let filteredConcerts = result.filter((concert) => concert.type === 'concert');
   setConcerts(filteredConcerts);
-  createPlaylist(filteredConcerts, session.token.accessToken, session.token.sub);
+  createPlaylist(filteredConcerts, session.token.accessToken, session.token.sub, setPlaylistStatus);
 }
 
 // resets concerts to empty array (currently used if nav is clicked)
@@ -51,7 +51,7 @@ return (
       <Navigation handleClick={handleClick}/>
 
       {concerts.length < 1 ? <Hero onSubmit={handleZipSubmit}/> :
-      <ConcertList concerts={concerts}></ConcertList>
+      <ConcertList concerts={concerts} status={playlistStatus}></ConcertList>
       }
       </main>
     </>

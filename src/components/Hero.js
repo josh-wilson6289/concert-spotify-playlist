@@ -7,9 +7,7 @@ import ZipInput from './ZipInput';
 export default function Hero ({ onSubmit }) {
   const {data: session} = useSession();
 
-  const login = () => {
-      signIn()
-  }
+
   
   if (!session) return (
 
@@ -22,7 +20,7 @@ export default function Hero ({ onSubmit }) {
           Link your Spotify account to begin.
         </p>
         <div className="mt-4 flex items-center justify-center">
-        <a className="spotify-login" onClick={login}><span>
+        <a className="spotify-login" onClick={signIn}><span>
             <Image src={SpotifyLogo} alt="Login to Spotify" width={150} height={100} />
           </span></a>
         </div>
