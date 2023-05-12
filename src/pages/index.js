@@ -7,10 +7,7 @@ import Navigation from "../components/Navigation";
 import Hero from "../components/Hero";
 import searchConcerts from './api/searchConcerts';
 import ConcertList from '../components/ConcertList';
-import formatArtists from './api/formatArtists';
-import createSpotifyPlaylist from '../pages/api/createSpotifyPlaylist';
-
-
+import createPlaylist from './api/createPlaylist';
 
 export default function Home() {
 
@@ -29,14 +26,13 @@ useEffect(() => {
 },[])
 
 // searches seatgeek api for concerts when zip code is submitted.  updates concerts state.
-const handleZipSubmit = async (zip, spotifyID) => { 
+const handleZipSubmit = async (zip) => { 
   const result = await searchConcerts(currentDate, maxDate, zip);
   
   // removes comedy shows and all other types of events
   let filteredConcerts = result.filter((concert) => concert.type === 'concert');
-  
   setConcerts(filteredConcerts);
-  formatArtists(filteredConcerts, session.token.accessToken);
+  createPlaylist(filteredConcerts, session.token.accessToken, session.token.sub);
 }
 
 // resets concerts to empty array (currently used if nav is clicked)

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import '../../../.env.local'
 
 const searchConcerts = async (currentDate, maxDate, zip) => {
   const seatgeekId = process.env.NEXT_PUBLIC_SEATGEEK_KEY;
