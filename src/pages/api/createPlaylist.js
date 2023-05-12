@@ -97,9 +97,7 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
     const URIs = updatedArtistArray.map((artist) => {
       return artist.topTrack;
     })
-    
-    console.log(formatURIs(URIs))
-    
+  
     function formatURIs (URIs) {
       let newURIArray = [];
       while (URIs.length > 100) {
