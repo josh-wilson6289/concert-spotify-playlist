@@ -103,7 +103,8 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
       return artist.topTrack;
     })
   
-    function formatURIs (URIs) {
+    async function formatURIs (URIs) {
+      console.log("this is the formatURIs function", URIs)
       const maxQueries = 100;
       if (URIs.length > maxQueries) {
         const batchedURIs = [];
