@@ -117,9 +117,9 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
     } 
     return [URIs];
   }
-    const formattedURIs = await formatURIs(URIs);
-
-    console.log(formattedURIs)
+    let formattedURIs = await formatURIs(URIs);
+  
+    let addSongs = (formattedURIs) => {
     formattedURIs.map(async (URIs) => {
     const response = await axios({
       method: 'post',
@@ -135,6 +135,8 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
     setSpotifyRes(response.status);
     setSpotifyPlaylistURL(spotifyPlaylistURL)
   })
+}
+  addSongs(formattedURIs)
   }
 
   createEmptyPlaylist(spotifyId, token);
