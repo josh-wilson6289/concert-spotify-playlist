@@ -116,7 +116,8 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
     } 
     return [URIs];
   }
-    const formattedURIs = formatURIs(URIs);
+    const formattedURIs = await formatURIs(URIs);
+
     console.log(formattedURIs)
     formattedURIs.map(async (URIs) => {
     const response = await axios({
