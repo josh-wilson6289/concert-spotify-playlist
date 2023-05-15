@@ -94,24 +94,28 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
   }
 
   const populatePlaylist = async (updatedArtistArray, playlistId) => {
+
+    const URL = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`
+    
     const URIs = updatedArtistArray.map((artist) => {
       return artist.topTrack;
     })
   
     function formatURIs (URIs) {
-      let newURIArray = [];
-      while (URIs.length > 100) {
-      newURIArray.push(URIs.slice(0,100))
-      URIs = URIs.slice(100, URIs.length)
-    }
-    newURIArray.push(URIs)
-    return newURIArray
-    }
-
-   
-    const URL = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`
-    
-    formatURIs(URIs).map(async (URIs) => {
+      const maxQueries = 100;
+      if (URIs.length > maxQueries) {
+        const batchedURIs = [];
+        for (let i = 0; i < URIs.length; i += maxQueries) {
+          const batch = URIs.slice(i, i + maxQueries);
+          batchedURIs.push(batch);
+      } 
+      return batchedURIs;
+ 
+    } 
+    return URIs;
+  }
+    const formattedURIs = formatURIs(URIs);
+    formattedURIs.map(async (URIs) => {
     const response = await axios({
       method: 'post',
       url: URL,
