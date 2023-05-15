@@ -102,24 +102,22 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
     const URIs = updatedArtistArray.map((artist) => {
       return artist.topTrack;
     })
-  
-    async function formatURIs (URIs) {
-      console.log("this is the formatURIs function", URIs)
+
+    function formatURIs (arr) {
       const maxQueries = 100;
-      if (URIs.length > maxQueries) {
+      if (arr.length > maxQueries) {
         const batchedURIs = [];
-        for (let i = 0; i < URIs.length; i += maxQueries) {
-          const batch = URIs.slice(i, i + maxQueries);
+        for (let i = 0; i < arr.length; i += maxQueries) {
+          const batch = arr.slice(i, i + maxQueries);
           batchedURIs.push(batch);
       } 
       return batchedURIs;
  
     } 
-    return [URIs];
+    return [arr];
   }
-    let formattedURIs = await formatURIs(URIs);
-  
-    let addSongs = (formattedURIs) => {
+
+    function addSongs(formattedURIs) {
     formattedURIs.map(async (URIs) => {
     const response = await axios({
       method: 'post',
@@ -136,11 +134,11 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
     setSpotifyPlaylistURL(spotifyPlaylistURL)
   })
 }
-  addSongs(formattedURIs)
-  }
+  addSongs(formatURIs(URIs))
+}
 
   createEmptyPlaylist(spotifyId, token);
-  }
+}
 
   getArtists(concerts)
   
