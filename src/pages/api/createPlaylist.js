@@ -32,6 +32,7 @@ const createPlaylist = async (concerts, token, spotifyId, setPlaylistIsLoading, 
           Authorization: `Bearer ${token}`
         },
       });
+      console.log("this is the response from searchForID", response.data.artists.items[0].id)
       return response.data.artists.items[0].id;
     }
     
@@ -40,9 +41,10 @@ const createPlaylist = async (concerts, token, spotifyId, setPlaylistIsLoading, 
     // })
     const artistArrayIds = artistArray.map(async(artist) => {
       artist.id = await searchForId(artist.name);
+      console.log("This is each artist after searching for their IDs", artist)
       return artist;
     })
-
+    
     const updatedArtistArray = await Promise.all(artistArrayIds);
 
     getTopTrack(updatedArtistArray)
