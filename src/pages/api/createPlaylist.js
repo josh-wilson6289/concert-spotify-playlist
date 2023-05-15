@@ -112,9 +112,10 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
       return batchedURIs;
  
     } 
-    return URIs;
+    return [URIs];
   }
     const formattedURIs = formatURIs(URIs);
+    console.log(formattedURIs)
     formattedURIs.map(async (URIs) => {
     const response = await axios({
       method: 'post',
