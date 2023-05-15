@@ -45,10 +45,4 @@ body {
 .playlist-status {
   margin-top: 5%;
 }
-
-.playlist-status {
-  display: flex;
-  align-items: center;
-  justify-content: center;  
-}
   

@@ -1,8 +1,7 @@
 import React from 'react';
 import PlaylistStatus from './PlaylistStatus';
 
-const ConcertList = ({ concerts, status }) => {
-
+const ConcertList = ({ concerts, playlistIsLoading, spotifyRes, spotifyPlaylistURL}) => {
   
   let renderedConcerts = concerts.map((concert) => {
   
@@ -24,12 +23,15 @@ const ConcertList = ({ concerts, status }) => {
     )
   });
 
+
   return (
     <div>
-    <PlaylistStatus status={status}/>
+    <PlaylistStatus playlistIsLoading={playlistIsLoading} spotifyRes={spotifyRes} spotifyPlaylistURL={spotifyPlaylistURL}/>
+    {spotifyRes == 201&&
     <ul role="list" className="divide-y divide-gold">
       {renderedConcerts}
     </ul>
+    }
     </div>
   )
 }

@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const createPlaylist = async (concerts, token, spotifyId, setPlaylistStatus) => {
+const createPlaylist = async (concerts, token, spotifyId, setPlaylistIsLoading, setSpotifyRes, setSpotifyPlaylistURL) => {
   // make artist array mapping performers
+  setPlaylistIsLoading(true);
 
   const getArtists = (concerts) => {
     let artists = [];
@@ -90,10 +91,11 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
         public: false
       }
     })
-    populatePlaylist(updatedArtistArray, response.data.id)
+
+    populatePlaylist(updatedArtistArray, response.data.id, response.data.external_urls.spotify)
   }
 
-  const populatePlaylist = async (updatedArtistArray, playlistId) => {
+  const populatePlaylist = async (updatedArtistArray, playlistId, spotifyPlaylistURL) => {
 
     const URL = `https://api.spotify.com/v1/playlists/${playlistId}/tracks`
     
@@ -127,7 +129,9 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
       uris: URIs
       }
     })
-    setPlaylistStatus(response.status)
+    setPlaylistIsLoading(false);
+    setSpotifyRes(response.status);
+    setSpotifyPlaylistURL(spotifyPlaylistURL)
   })
   }
 
