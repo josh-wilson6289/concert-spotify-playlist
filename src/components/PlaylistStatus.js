@@ -19,14 +19,18 @@ const PlaylistStatus = ({ playlistIsLoading, spotifyRes, spotifyPlaylistURL }) =
       </div>
     </a>
   } else if (spotifyRes === undefined) {
-    status = <h2>Creating playlist</h2>;
-  } else if (status === 401) {
-    status = <h2>Sorry, session has expired. Please log back in</h2>
-    signOut();
-  } else if (status === 429) {
-    status = <h2>Sorry, we're experiencing a lot of traffic.  Please try again later</h2>
+    status = 
+      <h2>Creating playlist</h2>;
+  } else if (spotifyRes=== 401) {
+    status = 
+      <h2>Sorry, session has expired. Please log back in</h2>
+      signOut();
+  } else if (spotifyRes === 429) {
+    status = 
+      <h2>Sorry, we're experiencing a lot of traffic.  Please try again later</h2>
   } else {
-    status = <h2>Sorry, something went wrong</h2>;
+    status = 
+      <h2>Sorry, something went wrong</h2>;
   }
 
   return (
