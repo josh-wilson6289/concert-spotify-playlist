@@ -28,7 +28,6 @@ useEffect(() => {
   setMaxDate(addDays(date, 8).toISOString().split('T')[0]);
 },[])
 
-console.log(spotifyRes)
 // searches seatgeek api for concerts when zip code is submitted.  updates concerts state.
 const handleZipSubmit = async (zip) => { 
   const result = await searchConcerts(currentDate, maxDate, zip);

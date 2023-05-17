@@ -11,7 +11,7 @@ const PlaylistStatus = ({ playlistIsLoading, spotifyRes, spotifyPlaylistURL }) =
   if (spotifyRes=== 201) {
     status = 
     <a href={spotifyPlaylistURL} target="_blank">
-      <h2 className="p-1">Playlist Created!</h2>
+      <h2>Playlist Created!</h2>
       <div className="flex items-center justify-center text-xl">
       <h3>Click to listen</h3>
       <br></br>
@@ -19,18 +19,18 @@ const PlaylistStatus = ({ playlistIsLoading, spotifyRes, spotifyPlaylistURL }) =
       </div>
     </a>
   } else if (spotifyRes === undefined) {
-    status = "Creating playlist";
+    status = <h2>Creating playlist</h2>;
   } else if (status === 401) {
-    status = "Sorry, session has expired. Please log back in"
+    status = <h2>Sorry, session has expired. Please log back in</h2>
     signOut();
   } else if (status === 429) {
-    status = "Sorry, we're experiencing a lot of traffic.  Please try again later"
+    status = <h2>Sorry, we're experiencing a lot of traffic.  Please try again later</h2>
   } else {
-    status = "Sorry, something went wrong";
+    status = <h2>Sorry, something went wrong</h2>;
   }
 
   return (
-  <div className="flex items-center justify-center text-4xl lg:flex-1 text-white text-center">  
+  <div className="flex items-center justify-center text-4xl mt-10 p-1 lg:flex-1 text-white text-center">  
   {playlistIsLoading == true&& <Spinner />}
   {status}
   </div>
