@@ -21,7 +21,6 @@ const createPlaylist = async (concerts, token, spotifyId, setPlaylistIsLoading, 
   }
 
   const getArtistIds = async (artistArray) => {
-
     // api call using the artist name to return the id
     async function searchForId (name) {
       const URL = `https://api.spotify.com/v1/search?q=${name}&type=artist&limit=1&offset=0`
@@ -32,24 +31,29 @@ const createPlaylist = async (concerts, token, spotifyId, setPlaylistIsLoading, 
           Authorization: `Bearer ${token}`
         },
       });
-      return response.data.artists.items[0].id;
+      if (!response.data.artists.items[0]) {
+        return;
+      } else {
+      return response.data.artists.items[0].id
+      }
     }
     
-    // artistArray.forEach(async(artist) => {
-    //   artist.id = await searchForId(artist.name);
-    // })
     const artistArrayIds = artistArray.map(async(artist) => {
       artist.id = await searchForId(artist.name);
       return artist;
     })
 
     const updatedArtistArray = await Promise.all(artistArrayIds);
-    console.log("this is the updated artist array before searching for top tracks", updatedArtistArray)
-    getTopTrack(updatedArtistArray)
+  
+    let filteredUpdatedArtistArray = updatedArtistArray.filter((artist) => {
+      return artist.id != undefined;
+    })
+
+    getTopTrack(filteredUpdatedArtistArray)
   }
 
   const getTopTrack = async (artistArray) => {
-    console.log("this is the artist array in getArtistIds", artistArray)
+
     async function searchForTopTracks (id) {
     const URL = `https://api.spotify.com/v1/artists/${id}/top-tracks?market=US`
       let response = await axios({
@@ -59,18 +63,15 @@ const createPlaylist = async (concerts, token, spotifyId, setPlaylistIsLoading, 
           Authorization: `Bearer ${token}`
         },
       });
-      console.log("this is each URI after search", response.data.tracks[0].uri)
       return response.data.tracks[0].uri;
   }
 
   const artistArrayTopTrack = artistArray.map(async(artist) => {
     artist.topTrack = await searchForTopTracks(artist.id);
-    console.log("this is each artist after adding their top track", artist)
     return artist;
   })
 
   const updatedArtistArray = await Promise.all(artistArrayTopTrack)
-  console.log("this is the updated Artist Array after getting all top tracks")
   createSpotifyPlaylist(updatedArtistArray, token, spotifyId)
 }
 
@@ -94,7 +95,7 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
         public: false
       }
     })
-    console.log("this is where the empty playlist is created.  the playlist id is:", response.data.id, "Populate playlist is called now with the updated artist array:", updatedArtistArray)
+  
     populatePlaylist(updatedArtistArray, response.data.id, response.data.external_urls.spotify)
   }
 
@@ -107,7 +108,6 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
     })
 
     function formatURIs (arr) {
-      console.log("picking up that there are more than 100 artists")
       const maxQueries = 100;
       if (arr.length > maxQueries) {
         const batchedURIs = [];
