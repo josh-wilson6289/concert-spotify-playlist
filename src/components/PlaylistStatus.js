@@ -27,7 +27,7 @@ const PlaylistStatus = ({ playlistIsLoading, spotifyRes, spotifyPlaylistURL }) =
       signOut();
   } else if (spotifyRes === 429) {
     status = 
-      <h2>Sorry, we're experiencing a lot of traffic.  Please try again later</h2>
+      <h2>Sorry, we&apos;re experiencing a lot of traffic. Please try again later</h2>
   } else {
     status = 
       <h2>Sorry, something went wrong</h2>;
