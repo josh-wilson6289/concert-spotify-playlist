@@ -8,7 +8,7 @@ const PlaylistStatus = ({ playlistIsLoading, spotifyRes, spotifyPlaylistURL }) =
 
   let status;
 
-  if (spotifyRes=== 201) {
+  if (spotifyRes === 201 || spotifyRes === 502) {
     status = 
     <a href={spotifyPlaylistURL} target="_blank">
       <h2>Playlist Created!</h2>
@@ -21,7 +21,7 @@ const PlaylistStatus = ({ playlistIsLoading, spotifyRes, spotifyPlaylistURL }) =
   } else if (spotifyRes === undefined) {
     status = 
       <h2>Creating playlist</h2>;
-  } else if (spotifyRes=== 401) {
+  } else if (spotifyRes === 401) {
     status = 
       <h2>Sorry, session has expired. Please log back in</h2>
       signOut();

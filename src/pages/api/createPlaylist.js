@@ -139,10 +139,18 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
       data: {
       uris: URIs
       },
+    }).catch(error => {
+      setSpotifyRes(error.response.data.status)
+      console.log("error", error)
+      console.log("error.response", error.response)
+      console.log("error.response.status", error.response.status)
+      console.log("error.response.headers", error.response.headers)
     })
-    console.log(response.data.error)
+   
     setPlaylistIsLoading(false);
-    setSpotifyRes(response.status);
+    if (response != undefined) {
+      setSpotifyRes(response.status);
+    }
     setSpotifyPlaylistURL(spotifyPlaylistURL)
   })
 }
