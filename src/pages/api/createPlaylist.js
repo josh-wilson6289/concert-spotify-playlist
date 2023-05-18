@@ -63,7 +63,9 @@ const createPlaylist = async (concerts, token, spotifyId, setPlaylistIsLoading, 
           Authorization: `Bearer ${token}`
         },
       });
-      return response.data.tracks[0].uri;
+      if (response.data.tracks[0]) {
+        return response.data.tracks[0].uri;
+      }
   }
 
   const artistArrayTopTrack = artistArray.map(async(artist) => {
@@ -72,7 +74,12 @@ const createPlaylist = async (concerts, token, spotifyId, setPlaylistIsLoading, 
   })
 
   const updatedArtistArray = await Promise.all(artistArrayTopTrack)
-  createSpotifyPlaylist(updatedArtistArray, token, spotifyId)
+  
+  const filteredArtistArrayTopTrack = updatedArtistArray.filter((artist) => {
+    return artist.topTrack != undefined;
+  })
+  
+  createSpotifyPlaylist(filteredArtistArrayTopTrack, token, spotifyId)
 }
 
 const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
@@ -90,9 +97,9 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
         Authorization: `Bearer ${token}`
       },
       data: {
-        name: `Weekly SetList - ${date}`,
+        name: `Sonic Showcase - ${date}`,
         description: "text",
-        public: false
+        public: true,
       }
     })
   
@@ -131,8 +138,9 @@ const createSpotifyPlaylist = async (updatedArtistArray, token, spotifyId) => {
       },
       data: {
       uris: URIs
-      }
+      },
     })
+    console.log(response.data.error)
     setPlaylistIsLoading(false);
     setSpotifyRes(response.status);
     setSpotifyPlaylistURL(spotifyPlaylistURL)
