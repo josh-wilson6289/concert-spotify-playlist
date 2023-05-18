@@ -8,12 +8,11 @@ export default function Navigation({ handleClick, login }) {
   const {data: session} = useSession();
 
   return (
-     
         <nav className="navbar flex items-center justify-between p-6 lg:px-8 absolute inset-x-0 top-0" aria-label="Global">
           <div className="logo flex text-4xl lg:flex-1" onClick={handleClick}> 
             <a className="-m-1.5 p-1.5 text-30px text-white">
             <Image className="logo-image" src={headphones} alt="headphones logo" width={40} height={40} />
-              <span>SetList</span>
+              <span>Sonic Showcase</span>
             </a>
           </div>
 

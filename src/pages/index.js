@@ -25,7 +25,7 @@ useEffect(() => {
   setSpotifyRes();
   let date = new Date;
   setCurrentDate(date.toISOString().split('T')[0]);
-  setMaxDate(addDays(date, 8).toISOString().split('T')[0]);
+  setMaxDate(addDays(addMonths(date, 1), 1).toISOString().split('T')[0]);
 },[])
 
 // searches seatgeek api for concerts when zip code is submitted.  updates concerts state.
@@ -46,7 +46,7 @@ const handleClick = (e) => {
 return (
     <>
       <Head>
-        <title>SetList</title>
+        <title>SonicShowcase</title>
         <meta name="Local SetList" content="A website that locates concerts in your area and creates a spotify playlist of all upcoming artists" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
