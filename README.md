@@ -1,38 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Sonic Showcase
+Sonic Showcase is an innovative app that seamlessly creates a Spotify playlist featuring every band performing in the user's area within the next month. It leverages the powerful APIs of Seatgeek and Spotify to deliver a personalized concert experience like never before. This README file provides an overview of the app's features, authentication process, technologies used, instructions for setup, and a demo section.
 
-## Getting Started
+Features
+Seamless Playlist Creation: Sonic Showcase integrates with Seatgeek and Spotify's APIs to effortlessly curate a comprehensive Spotify playlist that includes every band scheduled to perform in the user's area within the next month.
+Secure Authentication: Implemented a robust authentication process using Next-Auth, ensuring users can easily log in to their Spotify accounts and personalize their concert experience.
+User-Friendly Interface: Built with React, Tailwind, and Next.js, Sonic Showcase offers an intuitive and visually appealing interface. Users can conveniently enter their zip code, retrieve concert data from the Seatgeek API, and browse upcoming concerts with ticket purchasing options.
+Technologies Used
+Next.js
+React
+Tailwind
+Next-Auth
+Node
+Axios
+Seatgeek API
+Spotify API
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+Setup Instructions
+To set up Sonic Showcase locally, follow these steps:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Clone the repository from GitHub: git clone https://github.com/your-username/sonic-showcase.git
+Navigate to the project directory: cd sonic-showcase
+Install the dependencies: npm install
+Configure your API keys:
+Obtain API keys for Seatgeek and Spotify.
+Create a .env.local file in the root directory.
+Add the following environment variables to the .env.local file:
+makefile
+Copy code
+SEATGEEK_API_KEY=your-seatgeek-api-key
+SPOTIFY_CLIENT_ID=your-spotify-client-id
+SPOTIFY_CLIENT_SECRET=your-spotify-client-secret
+Start the development server: npm run dev
+Open your browser and visit http://localhost:3000 to access Sonic Showcase.
+Demo 🎥
+Watch the demo video or GIF below to see Sonic Showcase in action:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Demo
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+https://github.com/josh-wilson6289/sonic-showcase/assets/68122047/2059e186-71af-4743-9cef-e11b7a05cb9d
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Deployed Site 🌐
+Check out the deployed site of Sonic Showcase at sonicshowcase.vercel.app.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Note: I am currently working with Spotify to enable access for a wider user base. If you would like access to the full deployed app, please email me at JoshWilsonDev28@gmail.com.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Please note that this setup assumes you have Node.js and npm installed on your machine.
